@@ -51,13 +51,13 @@ module DiscourseDonations
         invoices = Fabricate(:stripe_invoices).to_json
 
         stub_request(:get, "https://api.stripe.com/v1/invoices?customer=cus_FhHJDzf0OxYtb8&subscription=sub_8epEF0PuRhmltU")
-        .to_return(status: 200, body: invoices)
+          .to_return(status: 200, body: invoices)
       end
 
       xit 'whitelists the params' do
         should permit(:name, :username, :email, :password, :create_account).
-        for(:create, params: { params: allowed_params })
-        end
+          for(:create, params: { params: allowed_params })
+      end
 
         it 'responds ok for anonymous users' do
           controller.expects(:current_user).at_least(1).returns(current_user)
