@@ -43,11 +43,11 @@ module DiscourseDonations
     def create_source
       ::Stripe.api_key = SiteSetting.discourse_donations_secret_key
 
-      @source = ::Stripe::Source.create({
-        :type => "ach_credit_transfer",
+      @source = ::Stripe::Source.create(
+        type: "ach_credit_transfer",
         currency: SiteSetting.discourse_donations_currency,
         owner: { email: current_user.email },
-      })
+      )
     end
   end
 end

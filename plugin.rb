@@ -23,7 +23,7 @@ extend_content_security_policy(
 
 after_initialize do
   ::Stripe.api_version = "2019-08-14"
-  ::Stripe.set_app_info('Discourse Donations', version: '2.0.0', url: 'https://github.com/rimian/discourse-donations');
+  ::Stripe.set_app_info('Discourse Donations', version: '2.0.0', url: 'https://github.com/rimian/discourse-donations')
 
   load File.expand_path('../lib/discourse_donations/engine.rb', __FILE__)
   load File.expand_path('../config/routes.rb', __FILE__)

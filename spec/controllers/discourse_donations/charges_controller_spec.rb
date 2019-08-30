@@ -18,13 +18,13 @@ module DiscourseDonations
 
       ::Stripe::Source
         .expects(:create)
-        .with({
+        .with(
           type: 'ach_credit_transfer',
           currency: 'AUD',
           owner: { email: current_user.email },
-        })
+        )
         .once
-        .returns({ id: src_id })
+        .returns(id: src_id)
     end
 
     describe 'creating an account' do
@@ -49,7 +49,7 @@ module DiscourseDonations
 
     describe 'cause' do
       it 'has a cause' do
-        ::Stripe::Charge.expects(:create).once.with(has_entry(:metadata, { discourse_cause: 'A mission from God' }))
+        ::Stripe::Charge.expects(:create).once.with(has_entry(:metadata, discourse_cause: 'A mission from God'))
         post :create, params: { type: 'once', cause: 'A mission from God' }, format: :json
         expect(response).to have_http_status 200
       end
