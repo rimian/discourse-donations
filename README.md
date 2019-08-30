@@ -26,7 +26,15 @@ Accept donations from visitors to your [Discourse](https://www.discourse.org/) a
 
 **This is an experimental feature.** A user can create a new account if they makes a successful donation. Enable this in settings. When a user is not logged in, they will be asked to enter details for a new user account. This feature doesn't support mandatory custom user fields yet.
 
+## Development
+
+You may wish to use [stripe mock](https://github.com/stripe/stripe-mock) to test your api requests locally.
+
 ## Testing
+
+Running specs:
+
+`LOAD_PLUGINS=1 bundle exec rspec plugins/discourse-donations/spec`
 
 These commands should run:
 
