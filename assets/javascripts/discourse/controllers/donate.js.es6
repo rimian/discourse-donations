@@ -3,12 +3,12 @@ import { ajax } from "discourse/lib/ajax";
 
 export default Ember.Controller.extend({
   actions: {
-    stripeTokenHandler(token) {
+    stripePaymentHandler(paymentMethodId) {
       ajax("/donate/charges", {
-        data: { },
+        data: { paymentMethodId },
         method: "post"
       }).then((result) => {
-        console.log(result);
+
       });
     },
   },

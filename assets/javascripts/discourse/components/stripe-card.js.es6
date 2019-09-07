@@ -35,11 +35,11 @@ export default Ember.Component.extend({
 
   actions: {
     submitStripeCard() {
-      this.stripe.createToken(this.card).then((result) => {
+      this.stripe.createPaymentMethod('card', this.card).then((result) => {
         if (result.error) {
 
         } else {
-          this.stripeTokenHandler(result.token);
+          this.stripePaymentHandler(result.paymentMethod.id);
         }
       });
     },

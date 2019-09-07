@@ -3,14 +3,14 @@ import componentTest from "helpers/component-test";
 moduleForComponent("stripe-card", { integration: true });
 
 componentTest("stripe card success", {
-  template: `{{stripe-card stripeTokenHandler=onSubmit}}`,
+  template: `{{stripe-card stripePaymentHandler=onSubmit}}`,
 
   beforeEach() {
     window.Stripe = () => {
       return {
-        createToken() {
+        createPaymentMethod() {
           return new Ember.RSVP.Promise((resolve) => {
-            resolve({ token: 'stripe-token' });
+            resolve({ paymentMethod: { id: 'payment-method-id' }});
           });
         },
         elements() {
@@ -28,7 +28,7 @@ componentTest("stripe card success", {
     assert.expect(1);
 
     this.set("onSubmit", (arg) => {
-      assert.equal(arg, "stripe-token", "card is submitted");
+      assert.equal(arg, "payment-method-id", "payment method created");
     });
 
     await click(".btn-payment");
