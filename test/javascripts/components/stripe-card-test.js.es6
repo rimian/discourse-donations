@@ -2,32 +2,35 @@ import componentTest from "helpers/component-test";
 
 moduleForComponent("stripe-card", { integration: true });
 
-window.Stripe = function() {
-  return {
-    elements: function() {
-      return {
-        create: function() {
-          return {
-            mount: function() {},
-            card: function() {}
-          };
-        }
-      };
-    }
-  };
-};
-
-componentTest("stripe card", {
-  template: `{{stripe-card donateAmounts=donateAmounts}}`,
-
-  skip: true,
+componentTest("stripe card success", {
+  template: `{{stripe-card stripeTokenHandler=onSubmit}}`,
 
   beforeEach() {
-    Discourse.SiteSettings.discourse_donations_types = "";
-    this.set("donateAmounts", [{ value: 2 }]);
+    window.Stripe = () => {
+      return {
+        createToken() {
+          return new Ember.RSVP.Promise((resolve) => {
+            resolve({ token: 'stripe-token' });
+          });
+        },
+        elements() {
+          return {
+            create() {
+              return { mount() {}, card() {} };
+            },
+          };
+        },
+      };
+    };
   },
 
-  test(assert) {
-    assert.ok(true);
-  }
+  async test(assert) {
+    assert.expect(1);
+
+    this.set("onSubmit", (arg) => {
+      assert.equal(arg, "stripe-token", "card is submitted");
+    });
+
+    await click(".btn-payment");
+  },
 });
