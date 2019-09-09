@@ -3,14 +3,14 @@ import componentTest from "helpers/component-test";
 moduleForComponent("stripe-card", { integration: true });
 
 componentTest("stripe card success", {
-  template: `{{stripe-card stripePaymentHandler=onSubmit}}`,
+  template: `{{stripe-card handleConfirmStripeCard=onSubmit}}`,
 
   beforeEach() {
     window.Stripe = () => {
       return {
         createPaymentMethod() {
           return new Ember.RSVP.Promise((resolve) => {
-            resolve({ paymentMethod: { id: 'payment-method-id' }});
+            resolve('payment-method-response');
           });
         },
         elements() {
@@ -32,10 +32,7 @@ componentTest("stripe card success", {
     assert.expect(1);
 
     this.set("onSubmit", (arg) => {
-      assert.equal(arg, "payment-method-id", "payment method created");
-      return new Ember.RSVP.Promise((resolve) => {
-        resolve({});
-      });
+      assert.equal(arg, "payment-method-response", "payment method created");
     });
 
     await click(".btn-payment");

@@ -1,4 +1,11 @@
+import { default as computed } from "ember-addons/ember-computed-decorators";
+
 export default Ember.Component.extend({
+  @computed("confirmation.card.last4")
+  last4() {
+    return this.get("confirmation.card.last4");
+  },
+
   init() {
     this._super(...arguments);
 

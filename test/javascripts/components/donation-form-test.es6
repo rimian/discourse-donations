@@ -29,43 +29,17 @@ componentTest("donation form has a confirmation", {
       "component:stripe-card",
       Ember.Component.extend()
     );
-
-    this.set("confirmation", {
-      "id": "pm_123456789",
-      "object": "payment_method",
-      "card": {
-        "brand": "visa",
-        "checks": {
-          "address_line1_check": null,
-          "address_postal_code_check": null,
-          "cvc_check": null
-        },
-        "country": "US",
-        "exp_month": 8,
-        "exp_year": 2020,
-        "fingerprint": "ocap4Sxc0SLss757",
-        "funding": "credit",
-        "generated_from": null,
-        "last4": "4242",
-        "three_d_secure_usage": {
-          "supported": true
-        },
-        "wallet": null
-      },
-      "created": 123456789,
-      "customer": null,
-      "livemode": false,
-      "metadata": {
-        "order_id": "123456789"
-      },
-      "type": "card"
-    });
   },
 
   async test(assert) {
-    assert.ok(
-      find(".discourse-donations-confirmation").length,
-      "The confirmation form renders"
-    );
+    this.set("confirmation", { "card": { "last4": "4242" }});
+
+    const confirmExists = find(".discourse-donations-confirmation").length;
+
+    assert.ok(confirmExists, "The confirmation form renders");
+
+    const last4 = find(".discourse-donations-last4").text().trim();
+
+    assert.equal(last4, "4242", "The last 4 digits are correct");
   }
 });
