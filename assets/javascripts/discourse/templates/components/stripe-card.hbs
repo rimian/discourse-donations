@@ -3,7 +3,7 @@
 <div id="card-element"></div>
 
 {{#d-button action="submitStripeCard" class="btn btn-primary btn-payment"}}
-  {{i18n 'discourse_donations.submit'}} {{amount}}
+  {{i18n 'discourse_donations.confirm'}}<br>{{amount}}
 {{/d-button}}
 
 {{#if cardError}}

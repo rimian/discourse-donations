@@ -1,10 +1,8 @@
 en:
   site_settings:
     discourse_donations_enabled: "Enable the Discourse Donations plugin."
-    discourse_donations_enable_create_accounts: "EXPERIMENTAL: Enable anonymous users to create accounts after successful payment"
     discourse_donations_secret_key: "Stripe Secret Key"
     discourse_donations_public_key: "Stripe Public Key"
-    discourse_donations_shop_name: "Shop Name shown in Stripe Checkout form"
     discourse_donations_description: "Description shown in Stripe Checkout form"
     discourse_donations_currency: "Currency Code"
     discourse_donations_zip_code: "Show Zip Code"
@@ -12,12 +10,6 @@ en:
     discourse_donations_reward_badge_name: "Grant this badge to user when a payment is successful"
     discourse_donations_reward_group_name: "Add the user to this group when a payment is successful"
     discourse_donations_page_description: "Text to be added to /donate page. Markdown is supported."
-    discourse_donations_enable_transaction_fee: "Give the user the option of including the Stripe transaction fee in their donation."
-    discourse_donations_transaction_fee_fixed: "Fixed part of Stripe transaction fee (changes per region). See <a href='https://stripe.com/pricing'>Stripe's pricing for your region</a> and <a href='https://support.stripe.com/questions/can-i-charge-my-stripe-fees-to-my-customers'>Stripe's explaination of passing fees onto customers</a>."
-    discourse_donations_transaction_fee_percent: "Percent part of Stripe transaction fee (changes per region). See <a href='https://stripe.com/pricing'>Stripe's pricing for your region</a> and <a href='https://support.stripe.com/questions/can-i-charge-my-stripe-fees-to-my-customers'>Stripe's explaination of passing fees onto customers</a>."
-    discourse_donations_amounts: "Donation amounts available to user. First listed will be the default."
-    discourse_donations_custom_amount: "Allow custom donation amount"
-    discourse_donations_types: "Donation types. First listed will be the default."
     errors:
       discourse_donations_amount_must_be_number: "Amounts must be numbers"
 
@@ -27,8 +19,8 @@ en:
       title: "Make a Donation"
       amount: Amount
       card: Card
-      submit: Donate
-      submit_with_create_account: Make Payment and Create Account
+      submit: Make payment
+      confirm: Confirm payment
       invoice: "invoice"
       invoice_prefix: "You gave"
       receipt: "Receipt sent to {{email}}."

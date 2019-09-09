@@ -1,15 +1,14 @@
 
 export default Ember.Component.extend({
-  cardError: false,
-
   init() {
     this._super(...arguments);
 
     const settings = Discourse.SiteSettings;
 
     this.setProperties({
+      cardError: false,
+      color: jQuery("body").css("color"),
       stripe: Stripe(settings.discourse_donations_public_key),
-      color: jQuery("body").css("color")
     });
   },
 
@@ -46,14 +45,10 @@ export default Ember.Component.extend({
     submitStripeCard() {
       this.stripe.createPaymentMethod('card', this.card).then((paymentMethod) => {
         if (paymentMethod.error) {
-          this.set('cardError', paymentMethod.error);
+          this.set('cardError', paymentMethod.error.message);
         }
         else {
-          this.stripePaymentHandler(paymentMethod.paymentMethod.id, this.amount).then((paymentIntent) => {
-            if (paymentIntent.error) {
-              this.set('cardError', paymentIntent.error);
-            }
-          });
+          this.handleConfirmStripeCard(paymentMethod);
         }
       }, () => {
         this.set('cardError', 'Unknown error.');

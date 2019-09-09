@@ -5,7 +5,23 @@ export default Ember.Component.extend({
     const settings = Discourse.SiteSettings;
 
     this.setProperties({
+      confirmation: false,
       currency: settings.discourse_donations_currency,
     });
+  },
+
+  actions: {
+    handleConfirmStripeCard(paymentMethod) {
+      this.set('confirmation', paymentMethod);
+    },
+
+    confirmStripeCard() {
+      const paymentMethodId = paymentMethod.paymentMethod.id;
+      this.stripePaymentHandler(paymentMethodId, this.amount).then((paymentIntent) => {
+        if (paymentIntent.error) {
+          this.set('cardError', paymentIntent.error);
+        }
+      });
+    },
   },
 });
