@@ -1,7 +1,20 @@
-<form id="payment-form" class="form-horizontal">
-  <div class="donations-page-payment">
-    {{stripe-card
-      stripePaymentHandler=stripePaymentHandler
-    }}
+<form id="payment-form" class="form-horizontal details">
+  <div class="user-controls">
+    <div class="display-row">
+      <div class="field">Payment Amount</div>
+      <div class="value">{{input value=amount}}</div>
+    </div>
+  </div>
+
+  <div class="user-controls">
+    <div class="display-row">
+      <div class="field"></div>
+      <div class="value">
+        {{stripe-card
+          amount=amount
+          stripePaymentHandler=stripePaymentHandler
+        }}
+      </div>
+    </div>
   </div>
 </form>

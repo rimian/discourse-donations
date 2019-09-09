@@ -2,13 +2,9 @@
 
 <div id="card-element"></div>
 
-<div class="control-group save-button">
-  <div class="controls">
-    {{#d-button action="submitStripeCard" class="btn btn-primary btn-payment"}}
-      {{i18n 'discourse_donations.submit'}}
-    {{/d-button}}
-  </div>
-</div>
+{{#d-button action="submitStripeCard" class="btn btn-primary btn-payment"}}
+  {{i18n 'discourse_donations.submit'}} {{amount}}
+{{/d-button}}
 
 {{#if cardError}}
   <div class="popup-tip bad">

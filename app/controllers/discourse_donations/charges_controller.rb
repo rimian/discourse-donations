@@ -10,13 +10,15 @@ module DiscourseDonations
       begin
 
         response = ::Stripe::PaymentIntent.create(
-          amount: 1099,
+          amount: params[:amount],
           currency: SiteSetting.discourse_donations_currency,
           payment_method_types: ['card'],
           payment_method: params[:paymentMethodId],
           confirm: true,
         )
 
+      rescue ::Stripe::InvalidRequestError => e
+        response = { error: e }
       rescue ::Stripe::CardError => e
         response = { error: 'Card Declined' }
       end
