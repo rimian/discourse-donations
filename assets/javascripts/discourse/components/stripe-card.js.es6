@@ -44,19 +44,18 @@ export default Ember.Component.extend({
 
   actions: {
     submitStripeCard() {
-      this.stripe.createPaymentMethod('card', this.card).then((result) => {
-        console.log('payment happend');
-        if (result.error) {
-          this.set('cardError', result.error);
+      this.stripe.createPaymentMethod('card', this.card).then((paymentMethod) => {
+        if (paymentMethod.error) {
+          this.set('cardError', paymentMethod.error);
         }
         else {
-          this.stripePaymentHandler(result.paymentMethod.id, this.amount).then((result) => {
-            if (result.error) {
-              this.set('cardError', result.error);
+          this.stripePaymentHandler(paymentMethod.paymentMethod.id, this.amount).then((paymentIntent) => {
+            if (paymentIntent.error) {
+              this.set('cardError', paymentIntent.error);
             }
           });
         }
-      }, (err) => {
+      }, () => {
         this.set('cardError', 'Unknown error.');
       });
     },
