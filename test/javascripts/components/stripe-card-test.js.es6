@@ -16,7 +16,11 @@ componentTest("stripe card success", {
         elements() {
           return {
             create() {
-              return { mount() {}, card() {} };
+              return {
+                on() {},
+                card() {},
+                mount() {},
+              };
             },
           };
         },
@@ -29,6 +33,9 @@ componentTest("stripe card success", {
 
     this.set("onSubmit", (arg) => {
       assert.equal(arg, "payment-method-id", "payment method created");
+      return new Ember.RSVP.Promise((resolve) => {
+        resolve({});
+      });
     });
 
     await click(".btn-payment");

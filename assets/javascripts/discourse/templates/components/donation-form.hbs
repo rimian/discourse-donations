@@ -2,7 +2,10 @@
   <div class="user-controls">
     <div class="display-row">
       <div class="field">Payment Amount</div>
-      <div class="value">{{input value=amount}}</div>
+      <div class="value">
+        {{input value=amount}}
+        []{{currency}}]
+      </div>
     </div>
   </div>
 
@@ -12,6 +15,7 @@
       <div class="value">
         {{stripe-card
           amount=amount
+          currency=currency
           stripePaymentHandler=stripePaymentHandler
         }}
       </div>

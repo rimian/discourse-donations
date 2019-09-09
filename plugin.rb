@@ -6,7 +6,7 @@
 # url: https://github.com/rimian/discourse-donations
 # authors: Rimian Perkins, Chris Beach, Angus McLeod
 
-gem 'stripe', '5.1.0'
+gem 'stripe', '5.1.1'
 
 register_asset "stylesheets/common/discourse-donations.scss"
 register_asset "stylesheets/mobile/discourse-donations.scss"
@@ -49,7 +49,6 @@ after_initialize do
 
   class ::Category
     def donations_cause
-      SiteSetting.discourse_donations_causes_categories.split('|').include? self.id.to_s
     end
 
     def donations_total
