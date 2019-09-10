@@ -23,14 +23,17 @@ export default Ember.Component.extend({
     },
 
     handleConfirmStripeCard(paymentMethod) {
-      this.set('confirmation', true);
+      this.set('confirmation', paymentMethod);
     },
 
     confirmStripeCard() {
-      const paymentMethodId = paymentMethod.paymentMethod.id;
+      const paymentMethodId = this.confirmation.paymentMethod.id;
       this.stripePaymentHandler(paymentMethodId, this.amount).then((paymentIntent) => {
         if (paymentIntent.error) {
           this.set('cardError', paymentIntent.error);
+        }
+        else {
+          console.log('ok done');
         }
       });
     },
