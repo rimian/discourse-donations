@@ -23,11 +23,11 @@
       min-width: 100%;
 
       &:last-child {
-        order: 1;
+        order: 2;
       }
 
       &:first-child {
-        order: 2;
+        order: 1;
       }
     }
   }
@@ -37,7 +37,7 @@
   padding: 20px 0;
 }
 
-#payment-form {
+.discourse-donations-section-columns {
   margin: 20px;
   padding: 20px;
   border: 1px $primary-low-mid solid;
@@ -46,4 +46,12 @@
 
 #card-action {
   margin: 20px 0;
+}
+
+.discourse-donations-confirmation {
+  width: 100%;
+
+  td {
+    padding: 10px;
+  }
 }

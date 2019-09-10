@@ -18,8 +18,12 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    closeModal() {
+      this.set('confirmation', false);
+    },
+
     handleConfirmStripeCard(paymentMethod) {
-      this.set('confirmation', paymentMethod);
+      this.set('confirmation', true);
     },
 
     confirmStripeCard() {

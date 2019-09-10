@@ -7,10 +7,10 @@
   {{#d-button action="submitStripeCard" class="btn btn-primary btn-payment"}}
     {{i18n 'discourse_donations.confirm'}}<br>{{amount}}
   {{/d-button}}
-</div>
 
-{{#if cardError}}
-  <div class="popup-tip bad">
-    {{cardError}}
-  </div>
-{{/if}}
+  {{#if cardError}}
+    <div class="popup-tip bad">
+      {{cardError}}
+    </div>
+  {{/if}}
+</div>
