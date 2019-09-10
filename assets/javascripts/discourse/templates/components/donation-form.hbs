@@ -12,13 +12,23 @@
           <td class="discourse-donations-last4">.... .... .... {{last4}}</td>
         </tr>
       </table>
+
     {{/d-modal-body}}
+
     <div class='modal-footer'>
       {{#d-button action="confirmStripeCard" class="btn btn-primary btn-payment"}}
         {{i18n 'discourse_donations.submit'}} {{amount}}
       {{/d-button}}
     </div>
+
   {{/d-modal}}
+
+  {{#if paymentError}}
+    <div class="popup-tip bad">
+      {{paymentError}}
+    </div>
+  {{/if}}
+
 {{else}}
   <div class="discourse-donations-section-columns">
     <div class="section-column">

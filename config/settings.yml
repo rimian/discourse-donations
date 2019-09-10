@@ -13,15 +13,15 @@ plugins:
     default: ''
   discourse_donations_currency:
     client: true
-    default: "US dollar (USD)"
+    default: "USD"
     type: enum
     choices:
-      - Australian dollar (AUD)
-      - Canadian dollar (CAD)
-      - Euro (EUR)
-      - Japanese yen (JPY)
-      - Pound sterling (GBP)
-      - US dollar (USD)
+      - AUD
+      - CAD
+      - EUR
+      - JPY
+      - GBP
+      - USD
   discourse_donations_page_description:
     client: true
     default: ''

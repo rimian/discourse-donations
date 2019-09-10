@@ -19,6 +19,7 @@ export default Ember.Component.extend({
 
   actions: {
     closeModal() {
+      this.set('paymentError', false);
       this.set('confirmation', false);
     },
 
@@ -27,10 +28,10 @@ export default Ember.Component.extend({
     },
 
     confirmStripeCard() {
-      const paymentMethodId = this.confirmation.paymentMethod.id;
+      const paymentMethodId = this.confirmation.id;
       this.stripePaymentHandler(paymentMethodId, this.amount).then((paymentIntent) => {
         if (paymentIntent.error) {
-          this.set('cardError', paymentIntent.error);
+          this.set('paymentError', paymentIntent.error);
         }
         else {
           console.log('ok done');
