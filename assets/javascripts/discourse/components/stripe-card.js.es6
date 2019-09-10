@@ -8,6 +8,7 @@ export default Ember.Component.extend({
     this.setProperties({
       cardError: false,
       color: jQuery("body").css("color"),
+      backgroundColor: jQuery("body").css("background-color"),
       stripe: Stripe(settings.discourse_donations_public_key),
     });
   },

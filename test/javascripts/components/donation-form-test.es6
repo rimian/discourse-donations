@@ -40,6 +40,6 @@ componentTest("donation form has a confirmation", {
 
     const last4 = find(".discourse-donations-last4").text().trim();
 
-    assert.equal(last4, "4242", "The last 4 digits are correct");
+    assert.equal(last4, ".... .... .... 4242", "The last 4 digits are correct");
   }
 });

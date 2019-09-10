@@ -1,6 +1,6 @@
 {{#if confirmation}}
   <div class="discourse-donations-confirmation">
-    This is the confirmation
+    <h3>This is the confirmation</h3>
 
     <table>
       <tr>
@@ -9,7 +9,7 @@
       </tr>
       <tr>
         <td>Card</td>
-        <td class="discourse-donations-last4">{{last4}}</td>
+        <td class="discourse-donations-last4">.... .... .... {{last4}}</td>
       </tr>
     </table>
 
@@ -19,20 +19,22 @@
   </div>
 {{else}}
   <form id="payment-form" class="form-horizontal details">
-    <div class="user-controls">
-      <div class="display-row">
-        <div class="field">Payment Amount</div>
-        <div class="value">
-          {{input value=amount}}<br>
-          Enter {{currency}}
+    <div class="discourse-donations-section-columns">
+      <div class="section-column">
+        <h3>Your information</h3>
+
+        <div class="user-controls">
+          <div class="display-row">
+            <div class="field">Payment Amount</div>
+            <div class="value">
+              {{input value=amount}}<br>
+              Enter {{currency}}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="user-controls">
-      <div class="display-row">
-        <div class="field"></div>
-        <div class="value">
+      <div class="section-column">
+        <div style>
           {{stripe-card
             amount=amount
             currency=currency
