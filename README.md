@@ -1,5 +1,9 @@
 # Discourse Donations
 
+This plugin has moved here:
+
+https://github.com/rimian/discourse-patrons
+
 [![Build Status](https://travis-ci.org/rimian/discourse-donations.svg?branch=master)](https://travis-ci.org/rimian/discourse-donations)
 
 Accept donations from visitors to your [Discourse](https://www.discourse.org/) application. Integrates with [Stripe](https://stripe.com).
